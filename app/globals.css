@@ -2,26 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+* {
+  @apply box-border m-0 p-0;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+}
+.clock {
+  @apply min-h-screen flex items-center justify-center;
+}
+.clock-wrapper {
+  @apply h-[600px] w-[600px] text-[#333] bg-[rgba(0,0,0,0.1)] shadow-[0_0.5rem_1.5rem_rgba(0,0,0,0.8)] flex items-center justify-center relative rounded-[50%] border-[20px] border-solid border-[#333];
+}
+.digital-clock {
+  @apply absolute bg-[white] flex items-center px-6 py-2 rounded-[15px] border-4 border-solid border-[gray] bottom-[20%];
+}
+.digital-clock span {
+  @apply text-[1.2rem] font-[bold];
+}
+.digital-clock .period {
+  @apply absolute text-[10px] p-[0.3rem] right-0 top-[0.3rem];
+}
+.center {
+  @apply h-5 w-5 bg-[#333] z-[100] rounded-[50%];
+}
+.hand {
+  @apply absolute flex items-end justify-center;
+}
+.hand .hh {
+  @apply w-2 h-[150px] bg-[#333] absolute rounded-[10px];
+}
+.hand .hm {
+  @apply w-[5px] h-[180px] bg-[#777] absolute z-10 rounded-[10px];
+}
+.hand .hs {
+  @apply w-1 h-[220px] bg-[orangered] absolute z-20 rounded-[10px];
+}
+.number {
+  @apply absolute text-center inset-[30px];
+}
+.number span {
+  @apply block text-[2rem] font-[bold];
+}
+.sec-item,
+.hour-item {
+  @apply absolute text-center inset-0.5;
+}
+.sec-item span,
+.hour-item span {
+  @apply inline-block bg-[#333];
+}
+.sec-item span {
+  @apply h-2.5 w-0.5;
+}
+.hour-item span {
+  @apply h-5 w-[3px];
 }
